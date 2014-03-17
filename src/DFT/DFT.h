@@ -5,13 +5,13 @@
 #include <RUtil2.h>
 
 #if 0
-#include "_DFT_Generic.h"
+#include "_DFT_Gnrc.h"
 #endif
 
 #ifdef __RFNL_Install
-#define _RTAddress "RFNL/DFT/_DFT_Generic.h"
+#define _RTAddress "RFNL/DFT/_DFT_Gnrc.h"
 #else
-#define _RTAddress "DFT/_DFT_Generic.h"
+#define _RTAddress "DFT/_DFT_Gnrc.h"
 #endif
 
 #define _ClassName

@@ -1,11 +1,11 @@
-#include "BitRev.h"
+#include "DFT.h"
 #include <math.h>
 #include <RUtil2.h>
 
 #if 0
-#include "_BitRev_Generic.rc"
+#include "_DFT_Gnrc.rc"
 #endif
-#define _RTAddress "DFT/_BitRev_Generic.rc"
+#define _RTAddress "DFT/_DFT_Gnrc.rc"
 
 #define _ClassName
 #define _Attr 1

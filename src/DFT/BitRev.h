@@ -4,12 +4,12 @@
 #include <RUtil2.h>
 
 #if 0
-#include "_BitRev_Generic.h"
+#include "_BitRev_Gnrc.h"
 #endif
 #ifdef __RFNL_Install
-#define _RTAddress "RFNL/DFT/_BitRev_Generic.h"
+#define _RTAddress "RFNL/DFT/_BitRev_Gnrc.h"
 #else
-#define _RTAddress "DFT/_BitRev_Generic.h"
+#define _RTAddress "DFT/_BitRev_Gnrc.h"
 #endif
 
 #define _ClassName

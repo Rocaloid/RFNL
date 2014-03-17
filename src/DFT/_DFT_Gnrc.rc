@@ -1,6 +1,6 @@
 //Typical in-place radix-2 fft. No instruction set-specific optimizations.
-//Slow but tiny and generic.
-RTFunc(void, RFNL_Radix2_Generic, _T1* Real, _T1* Imag, int Power)
+//Slow but tiny and Gnrc.
+RTFunc(void, RFNL_Radix2_Gnrc, _T1* Real, _T1* Imag, int Power)
 {
 	int Layer;
 	int i, j, k, pmul, current, another, currentBase;
@@ -46,24 +46,24 @@ RTFunc(void, RFNL_Radix2_Generic, _T1* Real, _T1* Imag, int Power)
     }
 }
 
-RTFunc(void, __RFNL_FFT_IP_Generic, _T1* DestReal, _T1* DestImag, int Power)
+RTFunc(void, __RFNL_FFT_IP_Gnrc, _T1* DestReal, _T1* DestImag, int Power)
 {
     int Size = pow(2, Power);
     _T1* TempReal = RCall(RAlloc, _T1)(Size);
     _T1* TempImag = RCall(RAlloc, _T1)(Size);
-    RCall(RFNL_CBitRev_Generic, _T1)
+    RCall(RFNL_CBitRev_Gnrc, _T1)
         (TempReal, TempImag, DestReal, DestImag, Power);
     memcpy(DestReal, TempReal, Size * sizeof(_T1));
     memcpy(DestImag, TempImag, Size * sizeof(_T1));
-    RCall(RFNL_Radix2_Generic, _T1)
+    RCall(RFNL_Radix2_Gnrc, _T1)
         (DestReal, DestImag, Power);
     RFree(TempReal);
     RFree(TempImag);
 }
 
-RTFunc(void, RFNL_RFFT_Generic, _T1* DestReal, _T1* DestImag,
-                                _T1* SorcReal,
-                                int Power)
+RTFunc(void, RFNL_RFFT_Gnrc, _T1* DestReal, _T1* DestImag,
+                             _T1* SorcReal,
+                             int Power)
 {
     int Size = pow(2, Power);
     memset(DestImag, 0, Size * sizeof(_T1));
@@ -71,19 +71,19 @@ RTFunc(void, RFNL_RFFT_Generic, _T1* DestReal, _T1* DestImag,
     if(DestReal == SorcReal)
     {
         memcpy(DestReal, SorcReal, Size * sizeof(_T1));
-        RCall(__RFNL_FFT_IP_Generic, _T1)(DestReal, DestImag, Power);
+        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, DestImag, Power);
     }else
     {
-        RCall(RFNL_RBitRev_Generic, _T1)
+        RCall(RFNL_RBitRev_Gnrc, _T1)
             (DestReal, SorcReal, Power);
-        RCall(RFNL_Radix2_Generic, _T1)
+        RCall(RFNL_Radix2_Gnrc, _T1)
             (DestReal, DestImag, Power);
     }
 }
 
-RTFunc(void, RFNL_CFFT_Generic, _T1* DestReal, _T1* DestImag,
-                                _T1* SorcReal, _T1* SorcImag,
-                                int Power)
+RTFunc(void, RFNL_CFFT_Gnrc, _T1* DestReal, _T1* DestImag,
+                             _T1* SorcReal, _T1* SorcImag,
+                             int Power)
 {
     //Inplace fft is not recommended.
     if(DestReal == SorcReal || DestImag == SorcImag)
@@ -91,19 +91,19 @@ RTFunc(void, RFNL_CFFT_Generic, _T1* DestReal, _T1* DestImag,
         int Size = pow(2, Power);
         memcpy(DestReal, SorcReal, Size * sizeof(_T1));
         memcpy(DestImag, SorcImag, Size * sizeof(_T1));
-        RCall(__RFNL_FFT_IP_Generic, _T1)(DestReal, DestImag, Power);
+        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, DestImag, Power);
     }else
     {
-        RCall(RFNL_CBitRev_Generic, _T1)
+        RCall(RFNL_CBitRev_Gnrc, _T1)
             (DestReal, DestImag, SorcReal, SorcImag, Power);
-        RCall(RFNL_Radix2_Generic, _T1)
+        RCall(RFNL_Radix2_Gnrc, _T1)
             (DestReal, DestImag, Power);
     }
 }
 
-RTFunc(void, RFNL_IRFFT_Generic, _T1* DestReal,
-                                 _T1* SorcReal, _T1* SorcImag,
-                                 int Power)
+RTFunc(void, RFNL_IRFFT_Gnrc, _T1* DestReal,
+                              _T1* SorcReal, _T1* SorcImag,
+                              int Power)
 {
     _T1* TempImag;
     int i;
@@ -124,10 +124,10 @@ RTFunc(void, RFNL_IRFFT_Generic, _T1* DestReal,
             TempImag[i + 2] *= - 1;
             TempImag[i + 3] *= - 1;
         }
-        RCall(__RFNL_FFT_IP_Generic, _T1)(DestReal, TempImag, Power);
+        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, TempImag, Power);
     }else
     {
-        RCall(RFNL_CBitRev_Generic, _T1)
+        RCall(RFNL_CBitRev_Gnrc, _T1)
             (DestReal, TempImag, SorcReal, SorcImag, Power);
         //Conjugate
         for(i = 0; i < Size - 3; i += 4)
@@ -137,7 +137,7 @@ RTFunc(void, RFNL_IRFFT_Generic, _T1* DestReal,
             TempImag[i + 2] *= - 1;
             TempImag[i + 3] *= - 1;
         }
-        RCall(RFNL_Radix2_Generic, _T1)
+        RCall(RFNL_Radix2_Gnrc, _T1)
             (DestReal, TempImag, Power);
     }
     
@@ -152,9 +152,9 @@ RTFunc(void, RFNL_IRFFT_Generic, _T1* DestReal,
     RFree(TempImag);
 }
 
-RTFunc(void, RFNL_ICFFT_Generic, _T1* DestReal, _T1* DestImag,
-                                 _T1* SorcReal, _T1* SorcImag,
-                                 int Power)
+RTFunc(void, RFNL_ICFFT_Gnrc, _T1* DestReal, _T1* DestImag,
+                              _T1* SorcReal, _T1* SorcImag,
+                              int Power)
 {
     int i;
     int Size = pow(2, Power);
@@ -173,10 +173,10 @@ RTFunc(void, RFNL_ICFFT_Generic, _T1* DestReal, _T1* DestImag,
             DestImag[i + 2] *= - 1;
             DestImag[i + 3] *= - 1;
         }
-        RCall(__RFNL_FFT_IP_Generic, _T1)(DestReal, DestImag, Power);
+        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, DestImag, Power);
     }else
     {
-        RCall(RFNL_CBitRev_Generic, _T1)
+        RCall(RFNL_CBitRev_Gnrc, _T1)
             (DestReal, DestImag, SorcReal, SorcImag, Power);
         //Conjugate
         for(i = 0; i < Size - 3; i += 4)
@@ -186,7 +186,7 @@ RTFunc(void, RFNL_ICFFT_Generic, _T1* DestReal, _T1* DestImag,
             DestImag[i + 2] *= - 1;
             DestImag[i + 3] *= - 1;
         }
-        RCall(RFNL_Radix2_Generic, _T1)
+        RCall(RFNL_Radix2_Gnrc, _T1)
             (DestReal, DestImag, Power);
     }
     
@@ -204,7 +204,7 @@ RTFunc(void, RFNL_ICFFT_Generic, _T1* DestReal, _T1* DestImag,
     }
 }
 
-RTFunc(void, RFNL_FFTReflect_Generic, _T1* DestReal, _T1* DestImag, int Power)
+RTFunc(void, RFNL_FFTReflect_Gnrc, _T1* DestReal, _T1* DestImag, int Power)
 {
     int i;
     int Size = pow(2, Power);

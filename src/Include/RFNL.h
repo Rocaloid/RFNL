@@ -2,5 +2,5 @@
 #define __RFNL_Install
 #endif
 
-#include "DFT/DFT.h"
+#include <RFNL/DFT/DFT.h>
 

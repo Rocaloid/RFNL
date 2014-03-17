@@ -9,8 +9,13 @@ set(CMAKE_C_FLAGS "-Ofast -I${TopDir}/src")
 add_library(RFNL SHARED ${SRC_LIST})
 target_include_directories(RFNL PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
-#install(FILES Include/RFNL.h
-#              DESTINATION /usr/include/RUtil2)
+install(FILES DFT/DFT.h
+              DFT/BitRev.h
+              DFT/_DFT_Generic.h
+              DFT/_BitRev_Generic.h
+              DESTINATION /usr/include/RFNL/DFT/)
+install(FILES Include/RFNL.h
+              DESTINATION /usr/include/)
 
-#install(TARGETS RFNL ARCHIVE DESTINATION /usr/lib)
+install(TARGETS RFNL LIBRARY DESTINATION /usr/lib)
 

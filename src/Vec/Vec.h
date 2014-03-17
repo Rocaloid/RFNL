@@ -4,8 +4,8 @@
 #include <RUtil2.h>
 
 #if 0
-#include "VecBasic_Gnrc.h"
-#include "VecMath_Gnrc.h"
+#include "_VecBasic_Gnrc.h"
+#include "_VecMath_Gnrc.h"
 #endif
 
 #ifdef __RFNL_Install

@@ -5,7 +5,7 @@ target_link_libraries(TestDFT RUtil2)
 target_link_libraries(TestDFT m)
 
 aux_source_directory(./TestVec Test2)
-add_executable(TestVec ${Test1})
+add_executable(TestVec ${Test2})
 target_link_libraries(TestVec RFNL)
 target_link_libraries(TestVec RUtil2)
 target_link_libraries(TestVec m)

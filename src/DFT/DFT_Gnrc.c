@@ -1,4 +1,5 @@
 #include "DFT.h"
+#include "../Vec/Vec.h"
 #include <math.h>
 #include <RUtil2.h>
 

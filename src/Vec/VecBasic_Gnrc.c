@@ -11,7 +11,7 @@
         Dest[i + 3] = Operator(Sorc1[i + 3], Sorc2[i + 3]); \
     } \
     for(; i < Size; i ++) \
-        Dest[i] = Operator(Sorc1[i], Sorc2[i]);
+        Dest[i + 0] = Operator(Sorc1[i + 0], Sorc2[i + 0])
 
 #define __RFNL_Unroll_COp4_Gnrc(Operator) \
     int i; \
@@ -23,7 +23,7 @@
         Dest[i + 3] = Operator(Sorc1[i + 3], Sorc2); \
     } \
     for(; i < Size; i ++) \
-        Dest[i] = Operator(Sorc1[i], Sorc2);
+        Dest[i + 0] = Operator(Sorc1[i + 0], Sorc2)
 
 #if 0
 #include "_VecBasic_Gnrc.rc"

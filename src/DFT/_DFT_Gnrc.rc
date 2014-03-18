@@ -2,16 +2,16 @@
 //Slow but tiny and Gnrc.
 RTFunc(void, RFNL_Radix2_Gnrc, _T1* Real, _T1* Imag, int Power)
 {
-	int Layer;
-	int i, j, k, pmul, current, another, currentBase;
-	int Size;
-	_T1 ReFactor, ImFactor;
-	_T1 Re, Im;
-	_T1 TPOS, TPOSTP;
-	
-	Size = pow(2, Power);
-	TPOS = 2 * 3.1415926535 / Size;
-	
+    int Layer;
+    int i, j, k, pmul, current, another, currentBase;
+    int Size;
+    _T1 ReFactor, ImFactor;
+    _T1 Re, Im;
+    _T1 TPOS, TPOSTP;
+    
+    Size = pow(2, Power);
+    TPOS = 2 * 3.1415926535 / Size;
+    
     //For each layer in fft.
     for(Layer = 1; Layer <= Power; Layer ++)
     {
@@ -61,149 +61,6 @@ RTFunc(void, __RFNL_FFT_IP_Gnrc, _T1* DestReal, _T1* DestImag, int Power)
     RFree(TempImag);
 }
 
-RTFunc(void, RFNL_RFFT_Gnrc, _T1* DestReal, _T1* DestImag,
-                             _T1* SorcReal,
-                             int Power)
-{
-    int Size = pow(2, Power);
-    memset(DestImag, 0, Size * sizeof(_T1));
-    //Inplace fft is not recommended.
-    if(DestReal == SorcReal)
-    {
-        memcpy(DestReal, SorcReal, Size * sizeof(_T1));
-        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, DestImag, Power);
-    }else
-    {
-        RCall(RFNL_RBitRev_Gnrc, _T1)
-            (DestReal, SorcReal, Power);
-        RCall(RFNL_Radix2_Gnrc, _T1)
-            (DestReal, DestImag, Power);
-    }
-}
-
-RTFunc(void, RFNL_CFFT_Gnrc, _T1* DestReal, _T1* DestImag,
-                             _T1* SorcReal, _T1* SorcImag,
-                             int Power)
-{
-    //Inplace fft is not recommended.
-    if(DestReal == SorcReal || DestImag == SorcImag)
-    {
-        int Size = pow(2, Power);
-        memcpy(DestReal, SorcReal, Size * sizeof(_T1));
-        memcpy(DestImag, SorcImag, Size * sizeof(_T1));
-        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, DestImag, Power);
-    }else
-    {
-        RCall(RFNL_CBitRev_Gnrc, _T1)
-            (DestReal, DestImag, SorcReal, SorcImag, Power);
-        RCall(RFNL_Radix2_Gnrc, _T1)
-            (DestReal, DestImag, Power);
-    }
-}
-
-RTFunc(void, RFNL_IRFFT_Gnrc, _T1* DestReal,
-                              _T1* SorcReal, _T1* SorcImag,
-                              int Power)
-{
-    _T1* TempImag;
-    int i;
-    int Size = pow(2, Power);
-    _T1 RcpSize = 1.0f / Size;
-    TempImag = RCall(RAlloc, _T1)(Size);
-    
-    //Inplace fft is not recommended.
-    if(DestReal == SorcReal)
-    {
-        memcpy(DestReal, SorcReal, Size * sizeof(_T1));
-        memcpy(TempImag, SorcImag, Size * sizeof(_T1));
-        //Conjugate
-        for(i = 0; i < Size - 3; i += 4)
-        {
-            TempImag[i + 0] *= - 1;
-            TempImag[i + 1] *= - 1;
-            TempImag[i + 2] *= - 1;
-            TempImag[i + 3] *= - 1;
-        }
-        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, TempImag, Power);
-    }else
-    {
-        RCall(RFNL_CBitRev_Gnrc, _T1)
-            (DestReal, TempImag, SorcReal, SorcImag, Power);
-        //Conjugate
-        for(i = 0; i < Size - 3; i += 4)
-        {
-            TempImag[i + 0] *= - 1;
-            TempImag[i + 1] *= - 1;
-            TempImag[i + 2] *= - 1;
-            TempImag[i + 3] *= - 1;
-        }
-        RCall(RFNL_Radix2_Gnrc, _T1)
-            (DestReal, TempImag, Power);
-    }
-    
-    //Normalize
-    for(i = 0; i < Size - 3; i += 4)
-    {
-        DestReal[i + 0] *= RcpSize;
-        DestReal[i + 1] *= RcpSize;
-        DestReal[i + 2] *= RcpSize;
-        DestReal[i + 3] *= RcpSize;
-    }
-    RFree(TempImag);
-}
-
-RTFunc(void, RFNL_ICFFT_Gnrc, _T1* DestReal, _T1* DestImag,
-                              _T1* SorcReal, _T1* SorcImag,
-                              int Power)
-{
-    int i;
-    int Size = pow(2, Power);
-    _T1 RcpSize = 1.0f / Size;
-    
-    //Inplace fft is not recommended.
-    if(DestReal == SorcReal || DestImag == SorcImag)
-    {
-        memcpy(DestReal, SorcReal, Size * sizeof(_T1));
-        memcpy(DestImag, SorcImag, Size * sizeof(_T1));
-        //Conjugate
-        for(i = 0; i < Size - 3; i += 4)
-        {
-            DestImag[i + 0] *= - 1;
-            DestImag[i + 1] *= - 1;
-            DestImag[i + 2] *= - 1;
-            DestImag[i + 3] *= - 1;
-        }
-        RCall(__RFNL_FFT_IP_Gnrc, _T1)(DestReal, DestImag, Power);
-    }else
-    {
-        RCall(RFNL_CBitRev_Gnrc, _T1)
-            (DestReal, DestImag, SorcReal, SorcImag, Power);
-        //Conjugate
-        for(i = 0; i < Size - 3; i += 4)
-        {
-            DestImag[i + 0] *= - 1;
-            DestImag[i + 1] *= - 1;
-            DestImag[i + 2] *= - 1;
-            DestImag[i + 3] *= - 1;
-        }
-        RCall(RFNL_Radix2_Gnrc, _T1)
-            (DestReal, DestImag, Power);
-    }
-    
-    //Normalize
-    for(i = 0; i < Size - 3; i += 4)
-    {
-        DestReal[i + 0] *= RcpSize;
-        DestReal[i + 1] *= RcpSize;
-        DestReal[i + 2] *= RcpSize;
-        DestReal[i + 3] *= RcpSize;
-        DestImag[i + 0] *= RcpSize;
-        DestImag[i + 1] *= RcpSize;
-        DestImag[i + 2] *= RcpSize;
-        DestImag[i + 3] *= RcpSize;
-    }
-}
-
 RTFunc(void, RFNL_FFTReflect_Gnrc, _T1* DestReal, _T1* DestImag, int Power)
 {
     int i;
@@ -219,4 +76,8 @@ RTFunc(void, RFNL_FFTReflect_Gnrc, _T1* DestReal, _T1* DestImag, int Power)
         DestImag[i + Size / 2 + 1] = - DestImag[Size / 2 - i - 1];
     }
 }
+
+#define _T2 Gnrc
+#include "_DFT_Arch.rc"
+#undef _T2
 

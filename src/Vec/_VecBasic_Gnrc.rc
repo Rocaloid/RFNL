@@ -98,7 +98,7 @@ RTFunc(void, RFNL_VSet_Gnrc, _T1* Dest, _T1 Sorc, int Size)
         Dest[i + 3] = Sorc;
     }
     for(; i < Size; i ++)
-        Dest[i] = Sorc;
+        Dest[i + 0] = Sorc;
 }
 
 RTFunc(void, RFNL_VAbs_Gnrc, _T1* Dest, _T1* Sorc, int Size)
@@ -112,7 +112,7 @@ RTFunc(void, RFNL_VAbs_Gnrc, _T1* Dest, _T1* Sorc, int Size)
         Dest[i + 3] = Sorc[i + 3] > 0 ? Sorc[i + 3] : - Sorc[i + 3];
     }
     for(; i < Size; i ++)
-        Dest[i] = Sorc[i] > 0 ? Sorc[i] : - Sorc[i];
+        Dest[i + 0] = Sorc[i + 0] > 0 ? Sorc[i + 0] : - Sorc[i + 0];
 }
 
 RTFunc(void, RFNL_VCopy_Gnrc, _T1* Dest, _T1* Sorc, int Size)
@@ -126,7 +126,7 @@ RTFunc(void, RFNL_VCopy_Gnrc, _T1* Dest, _T1* Sorc, int Size)
         Dest[i + 3] = Sorc[i + 3];
     }
     for(; i < Size; i ++)
-        Dest[i] = Sorc[i];
+        Dest[i + 0] = Sorc[i + 0];
 }
 
 RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Sorc, int From, int To)
@@ -141,7 +141,7 @@ RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Sorc, int From, int To)
         Max = Sorc[i + 3] > Max ? Sorc[i + 3] : Max;
     }
     for(; i < To; i ++)
-        Max = Sorc[i] > Max ? Sorc[i] : Max;
+        Max = Sorc[i + 0] > Max ? Sorc[i + 0] : Max;
     return Max;
 }
 
@@ -157,7 +157,7 @@ RTFunc(_T1, RFNL_VMinElmt_Gnrc, _T1* Sorc, int From, int To)
         Min = Sorc[i + 3] < Min ? Sorc[i + 3] : Min;
     }
     for(; i < To; i ++)
-        Min = Sorc[i] < Min ? Sorc[i] : Min;
+        Min = Sorc[i + 0] < Min ? Sorc[i + 0] : Min;
     return Min;
 }
 
@@ -174,7 +174,7 @@ RTFunc(int64_t, RFNL_VSum_Gnrc, _T1* Sorc, int From, int To)
         Sum += Sorc[i + 3];
     }
     for(; i < To; i ++)
-        Sum += Sorc[i];
+        Sum += Sorc[i + 0];
     return Sum;
 }
 #else
@@ -190,7 +190,7 @@ RTFunc(_T1, RFNL_VSum_Gnrc, _T1* Sorc, int From, int To)
         Sum += Sorc[i + 3];
     }
     for(; i < To; i ++)
-        Sum += Sorc[i];
+        Sum += Sorc[i + 0];
     return Sum;
 }
 #endif
@@ -208,7 +208,7 @@ RTFunc(_T1, RFNL_VAvg_Gnrc, _T1* Sorc, int From, int To)
         Sum += Sorc[i + 3];
     }
     for(; i < To; i ++)
-        Sum += Sorc[i];
+        Sum += Sorc[i + 0];
     return Sum / (_T1)(To - From);
 }
 #else
@@ -224,7 +224,7 @@ RTFunc(double, RFNL_VAvg_Gnrc, _T1* Sorc, int From, int To)
         Sum += Sorc[i + 3];
     }
     for(; i < To; i ++)
-        Sum += Sorc[i];
+        Sum += Sorc[i + 0];
     return (double)Sum / (double)(To - From);
 }
 #endif

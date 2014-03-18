@@ -1,29 +1,17 @@
 #include "Vec.h"
 #include <RUtil2.h>
 
-#define __RFNL_Unroll_Op4_Gnrc(Operator) \
+#define __RFNL_Unroll_Arg1Op4_Gnrc(Operator) \
     int i; \
     for(i = 0; i < Size - 3; i += 4) \
     { \
-        Dest[i + 0] = Operator(Sorc1[i + 0], Sorc2[i + 0]); \
-        Dest[i + 1] = Operator(Sorc1[i + 1], Sorc2[i + 1]); \
-        Dest[i + 2] = Operator(Sorc1[i + 2], Sorc2[i + 2]); \
-        Dest[i + 3] = Operator(Sorc1[i + 3], Sorc2[i + 3]); \
+        Dest[i + 0] = Operator(Sorc[i + 0]); \
+        Dest[i + 1] = Operator(Sorc[i + 1]); \
+        Dest[i + 2] = Operator(Sorc[i + 2]); \
+        Dest[i + 3] = Operator(Sorc[i + 3]); \
     } \
     for(; i < Size; i ++) \
-        Dest[i] = Operator(Sorc1[i], Sorc2[i]);
-
-#define __RFNL_Unroll_COp4_Gnrc(Operator) \
-    int i; \
-    for(i = 0; i < Size - 3; i += 4) \
-    { \
-        Dest[i + 0] = Operator(Sorc1[i + 0], Sorc2); \
-        Dest[i + 1] = Operator(Sorc1[i + 1], Sorc2); \
-        Dest[i + 2] = Operator(Sorc1[i + 2], Sorc2); \
-        Dest[i + 3] = Operator(Sorc1[i + 3], Sorc2); \
-    } \
-    for(; i < Size; i ++) \
-        Dest[i] = Operator(Sorc1[i], Sorc2);
+        Dest[i + 0] = Operator(Sorc[i + 0])
 
 #if 0
 #include "_VecMath_Gnrc.rc"

@@ -18,12 +18,12 @@ RTFunc(void, RFNL_VCDivBy_Gnrc, _T1* Dest, _T1* Sorc1, _T1 Sorc2, int Size);
 RTFunc(void, RFNL_VCMax_Gnrc, _T1* Dest, _T1* Sorc1, _T1 Sorc2, int Size);
 RTFunc(void, RFNL_VCMin_Gnrc, _T1* Dest, _T1* Sorc1, _T1 Sorc2, int Size);
 
-RTFunc(void, RFNL_VSet_Gnrc, _T1* Dest, _T1* Sorc1, _T1 Sorc2, int Size);
+RTFunc(void, RFNL_VSet_Gnrc, _T1* Dest, _T1 Sorc1, int Size);
 RTFunc(void, RFNL_VAbs_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 RTFunc(void, RFNL_VCopy_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 
-RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Dest, int From, int To);
-RTFunc(_T1, RFNL_VMinElmt_Gnrc, _T1* Dest, int From, int To);
+RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Sorc, int From, int To);
+RTFunc(_T1, RFNL_VMinElmt_Gnrc, _T1* Sorc, int From, int To);
 
 #ifdef _T1_IntLike
 RTFunc(int64_t, RFNL_VSum_Gnrc, _T1* Sorc, int From, int To);

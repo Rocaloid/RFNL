@@ -144,6 +144,7 @@ RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Sorc, int From, int To)
     }
     for(; i < To; i ++)
         Max = Sorc[i + 0] > Max ? Sorc[i + 0] : Max;
+    printf("%f\n", Max);
     return Max;
 }
 

@@ -2,8 +2,8 @@
 #include <math.h>
 #include "Vec/Vec.h"
 #include "FMath/FMath.h"
-#include "Include/RFNL.h"
 
+void RFNL_Use();
 int main()
 {
     int i;

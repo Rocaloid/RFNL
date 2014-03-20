@@ -7,19 +7,19 @@
         /src/DFT/BitRev.h
             [Arch:Generic]
             /src/DFT/BitRev_Gnrc.c
-                [Type]
-                /src/DFT/_BitRev_Gnrc.rc
+                [Type] - 1st Template
                 /src/DFT/_BitRev_Gnrc.h
+                /src/DFT/_BitRev_Gnrc.rc
         
         [Group:DFT]
             [Arch:Generic]
             /src/DFT/DFT_Gnrc.c
-                [Type]
+                [Type] - 1st Template
                 /src/DFT/_DFT_Gnrc.rc
-                    [Arch-Independent]
+                    [Arch-Independent] - 2nd Template
                     /src/DFT/_DFT_Arch.rc
                 /src/DFT/_DFT_Gnrc.h
-                    [Arch-Independent]
+                    [Arch-Independent] - 2nd Template
                     /src/DFT/_DFT_Arch.h
 
     [Module:Vec]
@@ -28,23 +28,24 @@
         [Arch:Generic]
             [Group:VecBasic]
             /src/Vec/VecBasic_Gnrc.c
-                [Type]
-                /src/Vec/_VecBasic_Gnrc.rc
+                [Type] - 1st Template
                 /src/Vec/_VecBasic_Gnrc.h
+                /src/Vec/_VecBasic_Gnrc.rc
             [Group:VecMath]
             /src/Vec/VecMath_Gnrc.c
-                [Type]
-                /src/Vec/_VecMath_Gnrc.rc
+                [Type] - 1st Template
                 /src/Vec/_VecMath_Gnrc.h
+                /src/Vec/_VecMath_Gnrc.rc
     
     [Module:FMath]
     /src/FMath/FMath.h
     /src/FMath/FMath.c
-        [Type]
-        /src/Vec/_FMath_Comm.rc
+        [Type] - 1st Template
         /src/Vec/_FMath_Comm.h
+        /src/Vec/_FMath_Comm.rc
     
         [Arch:Generic]
+            [Type] - 1st Template
             /src/Vec/_FMath_Gnrc.h
             /src/Vec/_FMath_Pk_Gnrc.h
     
@@ -53,7 +54,29 @@
     
         [Arch:Generic]
             [Group:Interp]
-            [Group:GenMatch]
+            /src/Interp/InterpBase_Gnrc.h
+                [Type] - 1st Template
+                /src/Interp/_InterpBase_Gnrc.h
+            [Group:GenPeak]
+            /src/Interp/GenPeak_Gnrc.h
+            /src/Interp/GenPeak_Gnrc.c
+                [Type] - 1st Template
+                /src/Interp/_GenPeak_Gnrc.h
+                /src/Interp/_GenPeak_Gnrc.rc
             [Group:MatchInterp]
+            /src/Interp/MatchInterp_Gnrc.h
+            /src/Interp/MatchInterp_Gnrc.c
+                [Type] - 1st Template
+                /src/Interp/_MatchInterp_Gnrc.h
+                /src/Interp/_MatchInterp_Gnrc.rc
+                    [Interpolation Methods] - 2nd Template
+                        /src/Interp/_MatchInterp_Gnrc_Base.rc
             [Group:MapStretch]
+            /src/Interp/MapStretch_Gnrc.h
+            /src/Interp/MapStretch_Gnrc.c
+                [Type] - 1st Template
+                /src/Interp/_MapStretch_Gnrc.h
+                /src/Interp/_MapStretch_Gnrc.rc
+                    [Interpolation Methods] - 2nd Template
+                        /src/Interp/_MapStretch_Gnrc_Base.rc
 

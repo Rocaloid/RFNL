@@ -18,12 +18,22 @@ install(FILES DFT/DFT.h
               DESTINATION /usr/include/RFNL/DFT/)
 install(FILES FMath/FMath.h
               FMath/_FMath_Comm.h
+              FMath/_FMath_Gnrc.h
+              FMath/_FMath_Pk_Gnrc.h
               DESTINATION /usr/include/RFNL/FMath/)
 install(FILES Vec/Vec.h
               Vec/_VecBasic_Gnrc.h
               Vec/_VecMath_Gnrc.h
               DESTINATION /usr/include/RFNL/Vec/)
 install(FILES Interp/Interp.h
+              Interp/InterpBase_Gnrc.h
+              Interp/_InterpBase_Gnrc.h
+              Interp/GenPeak_Gnrc.h
+              Interp/_GenPeak_Gnrc.h
+              Interp/MatchInterp_Gnrc.h
+              Interp/_MatchInterp_Gnrc.h
+              Interp/MapStretch_Gnrc.h
+              Interp/_MapStretch_Gnrc.h
               DESTINATION /usr/include/RFNL/Interp/)
 install(FILES Include/RFNL.h
               DESTINATION /usr/include/)

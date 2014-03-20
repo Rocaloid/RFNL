@@ -23,6 +23,8 @@ install(FILES Vec/Vec.h
               Vec/_VecBasic_Gnrc.h
               Vec/_VecMath_Gnrc.h
               DESTINATION /usr/include/RFNL/Vec/)
+install(FILES Interp/Interp.h
+              DESTINATION /usr/include/RFNL/Interp/)
 install(FILES Include/RFNL.h
               DESTINATION /usr/include/)
 

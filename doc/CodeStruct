@@ -1,0 +1,59 @@
+/src/Include/RFNL.h
+
+    [Module:DFT]
+    /src/DFT/DFT.h
+    
+        [Group:BitRev]
+        /src/DFT/BitRev.h
+            [Arch:Generic]
+            /src/DFT/BitRev_Gnrc.c
+                [Type]
+                /src/DFT/_BitRev_Gnrc.rc
+                /src/DFT/_BitRev_Gnrc.h
+        
+        [Group:DFT]
+            [Arch:Generic]
+            /src/DFT/DFT_Gnrc.c
+                [Type]
+                /src/DFT/_DFT_Gnrc.rc
+                    [Arch-Independent]
+                    /src/DFT/_DFT_Arch.rc
+                /src/DFT/_DFT_Gnrc.h
+                    [Arch-Independent]
+                    /src/DFT/_DFT_Arch.h
+
+    [Module:Vec]
+    /src/Vec/Vec.h
+    
+        [Arch:Generic]
+            [Group:VecBasic]
+            /src/Vec/VecBasic_Gnrc.c
+                [Type]
+                /src/Vec/_VecBasic_Gnrc.rc
+                /src/Vec/_VecBasic_Gnrc.h
+            [Group:VecMath]
+            /src/Vec/VecMath_Gnrc.c
+                [Type]
+                /src/Vec/_VecMath_Gnrc.rc
+                /src/Vec/_VecMath_Gnrc.h
+    
+    [Module:FMath]
+    /src/FMath/FMath.h
+    /src/FMath/FMath.c
+        [Type]
+        /src/Vec/_FMath_Comm.rc
+        /src/Vec/_FMath_Comm.h
+    
+        [Arch:Generic]
+            /src/Vec/_FMath_Gnrc.h
+            /src/Vec/_FMath_Pk_Gnrc.h
+    
+    [Module:Interp]
+    /src/Interp/Interp.h
+    
+        [Arch:Generic]
+            [Group:Interp]
+            [Group:GenMatch]
+            [Group:MatchInterp]
+            [Group:MapStretch]
+

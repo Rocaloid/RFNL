@@ -5,6 +5,7 @@
 #include <RFNL/DFT/DFT.h>
 #include <RFNL/Vec/Vec.h>
 #include <RFNL/FMath/FMath.h>
+#include <RFNL/Interp/Interp.h>
 
 void RFNL_Use();
 

@@ -1,3 +1,5 @@
+//Generic Template DFT Header
+
 #define _T2 Gnrc
 #include "_DFT_Arch.h"
 #undef _T2

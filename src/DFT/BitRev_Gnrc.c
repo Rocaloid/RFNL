@@ -1,3 +1,5 @@
+//Generic BitRev implementation
+
 #include "BitRev.h"
 #include <math.h>
 #include <RUtil2.h>

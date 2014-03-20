@@ -1,3 +1,5 @@
+//Generic Template DFT implementation
+
 //Typical in-place radix-2 fft. No instruction set-specific optimizations.
 //Slow but tiny and Gnrc.
 RTFunc(void, RFNL_Radix2_Gnrc, _T1* Real, _T1* Imag, int Power)

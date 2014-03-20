@@ -1,0 +1,24 @@
+//Generic Template Packed Fast Math Header & Implementation
+
+#define __RFNL_Define_Pk4Trig_Gnrc(PackName, BaseName) \
+    RTFunc(void __inline__, PackName, _T1* Dest, _T1* Sorc) \
+    { \
+        Dest[0] = RCall(BaseName, _T1)(Sorc[0]); \
+        Dest[1] = RCall(BaseName, _T1)(Sorc[1]); \
+        Dest[2] = RCall(BaseName, _T1)(Sorc[2]); \
+        Dest[3] = RCall(BaseName, _T1)(Sorc[3]); \
+    } \
+    RTFunc(void, PackName, _T1* Dest, _T1* Sorc)
+
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4Sin, RFNL_Sin);
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4PSin, RFNL_PSin);
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4Sin_LPrec, RFNL_Sin_LPrec);
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4PSin_LPrec, RFNL_PSin_LPrec);
+
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4Cos, RFNL_Cos);
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4PCos, RFNL_PCos);
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4Cos_LPrec, RFNL_Cos_LPrec);
+__RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4PCos_LPrec, RFNL_PCos_LPrec);
+
+//Packed tangent function is not implemented yet.
+

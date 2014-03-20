@@ -1,3 +1,5 @@
+//Generic Template Basic Vectorization implementation
+
 #define __RFNL_Add(a, b)   (a) + (b)
 #define __RFNL_Sub(a, b)   (a) - (b)
 #define __RFNL_SubBy(a, b) (b) - (a)

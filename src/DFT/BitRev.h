@@ -1,3 +1,5 @@
+//BitRev is the preparation function for FFTs.
+
 #ifndef RFNL_BITREV_H
 #define RFNL_BITREV_H
 

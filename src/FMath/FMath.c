@@ -1,3 +1,5 @@
+//Fast Math Common implementation
+
 #include "FMath.h"
 #include <math.h>
 #include <RUtil2.h>

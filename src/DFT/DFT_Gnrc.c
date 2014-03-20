@@ -1,3 +1,5 @@
+//Generic DFT implementation
+
 #include "DFT.h"
 #include "../Vec/Vec.h"
 #include <math.h>

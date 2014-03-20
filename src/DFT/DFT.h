@@ -1,3 +1,5 @@
+//Discrete Fourier Transform Header
+
 #ifndef RFNL_DFT_H
 #define RFNL_DFT_H
 

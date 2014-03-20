@@ -1,3 +1,5 @@
+//Generic Template Vectorized Math Header
+
 RTFunc(void, RFNL_VSqr_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 RTFunc(void, RFNL_VRcp_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 RTFunc(void, RFNL_VRcpSqr_Gnrc, _T1* Dest, _T1* Sorc, int Size);

@@ -1,3 +1,5 @@
+//Generic Vectorized Math implementation
+
 #include "Vec.h"
 #include <RUtil2.h>
 

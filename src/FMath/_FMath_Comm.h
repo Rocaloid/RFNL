@@ -1,3 +1,5 @@
+//Common Template Fast Math Header
+
 _T1* _C(__RFNL_SinTable, _, _T1);
 _T1* _C(__RFNL_CosTable, _, _T1);
 

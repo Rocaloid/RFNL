@@ -1,3 +1,5 @@
+//Generic Template Basic Vectorization Header
+
 RTFunc(void, RFNL_VAdd_Gnrc, _T1* Dest, _T1* Sorc1, _T1* Sorc2, int Size);
 RTFunc(void, RFNL_VSub_Gnrc, _T1* Dest, _T1* Sorc1, _T1* Sorc2, int Size);
 RTFunc(void, RFNL_VSubBy_Gnrc, _T1* Dest, _T1* Sorc1, _T1* Sorc2, int Size);

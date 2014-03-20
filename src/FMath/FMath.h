@@ -1,3 +1,5 @@
+//Fast Math Header
+
 #ifndef RFNL_FMATH_H
 #define RFNL_FMATH_H
 

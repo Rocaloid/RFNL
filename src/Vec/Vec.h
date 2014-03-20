@@ -1,3 +1,5 @@
+//Vectorization Header
+
 #ifndef RFNL_VEC_H
 #define RFNL_VEC_H
 

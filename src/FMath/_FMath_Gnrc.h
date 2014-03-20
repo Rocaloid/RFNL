@@ -1,3 +1,5 @@
+//Generic Template Fast Math Header & Implementation
+
 #undef __RFNL_Trig_CheckSign
 #undef __RFNL_Trig_Indexing
 #undef __RFNL_Trig_InterpRet
@@ -146,4 +148,6 @@ RTFunc(_T1 __inline__, RFNL_PTan_LPrec, _T1 x)
 {
     return RCall(RFNL_PSin_LPrec, _T1)(x) / RCall(RFNL_PCos_LPrec, _T1)(x);
 }
+
+#include "_FMath_Pk_Gnrc.h"
 

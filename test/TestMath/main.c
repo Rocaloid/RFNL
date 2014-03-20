@@ -10,12 +10,23 @@ int main()
     Float sum1 = 0;
     Float sum2 = 0;
     Float ret1, ret2;
+    Float tmp[4];
+    Float src[4];
     
-    for(i = 0; i < 1000; i ++)
+    for(i = 0; i < 1000 - 3; i += 4)
     {
-        ret1 = RFNL_PTan_Float(0.2f * i);
-        ret2 = tan(0.2f * i);
-        printf("%.9f\n", ret1 - ret2);
+        //ret1 = RFNL_PTan_Float(0.2f * i);
+        src[0] = 0.2f * (i + 0);
+        src[1] = 0.2f * (i + 1);
+        src[2] = 0.2f * (i + 2);
+        src[3] = 0.2f * (i + 3);
+        
+        RFNL_Pk4PCos_Float(tmp, src);
+        
+        printf("%.9f\n", tmp[0] - cos(src[0]));
+        printf("%.9f\n", tmp[1] - cos(src[1]));
+        printf("%.9f\n", tmp[2] - cos(src[2]));
+        printf("%.9f\n", tmp[3] - cos(src[3]));
         sum1 += ret1;
         sum2 += ret2;
     }

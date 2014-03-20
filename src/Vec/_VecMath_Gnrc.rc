@@ -1,3 +1,5 @@
+//Generic Template Vectorized Math implementation
+
 #undef __RFNL_Sqr
 #undef __RFNL_Rcp
 #undef __RFNL_RcpSqr

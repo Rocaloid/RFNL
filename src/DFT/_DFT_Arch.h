@@ -1,3 +1,5 @@
+//Architecture-independent 2nd Template DFT Interface
+
 RTFunc(void, _C(RFNL_RFFT, _, _T2), _T1* DestReal, _T1* DestImag,
                                     _T1* SorcReal,
                                     int Power);

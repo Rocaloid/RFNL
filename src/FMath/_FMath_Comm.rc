@@ -1,3 +1,5 @@
+//Common Template Fast Math implementation
+
 RTFunc(void __attribute__ ((constructor)), __RFNL_Init_SinCosTable)
 {
     int i;

@@ -34,16 +34,20 @@ RTFunc(void, _C(RFNL_MatchInterp, _, _T3, _Gnrc),
         for(j = LIndex; j < HIndex - 2; j += 3)
         {
             _T1 r = ((_T1)(j - LIndex)) / (HIndex - LIndex);
-            Dest[j + 0] = _C(RFNL_Interp, _, _T3, _, _T2)(LHeight, HHeight, r);
+            Dest[j + 0] =
+                _C(RFNL_Interp, _, _T3, _Gnrc, _, _T2)(LHeight, HHeight, r);
             r = ((_T1)(j - LIndex + 1)) / (HIndex - LIndex);
-            Dest[j + 1] = _C(RFNL_Interp, _, _T3, _, _T2)(LHeight, HHeight, r);
+            Dest[j + 1] =
+                _C(RFNL_Interp, _, _T3, _Gnrc, _, _T2)(LHeight, HHeight, r);
             r = ((_T1)(j - LIndex + 2)) / (HIndex - LIndex);
-            Dest[j + 2] = _C(RFNL_Interp, _, _T3, _, _T2)(LHeight, HHeight, r);
+            Dest[j + 2] = 
+                _C(RFNL_Interp, _, _T3, _Gnrc, _, _T2)(LHeight, HHeight, r);
         }
         for(; j < HIndex; j ++)
         {
             _T1 r = ((_T1)(j - LIndex)) / (HIndex - LIndex);
-            Dest[j + 0] = _C(RFNL_Interp, _, _T3, _, _T2)(LHeight, HHeight, r);
+            Dest[j + 0] =
+                _C(RFNL_Interp, _, _T3, _Gnrc, _, _T2)(LHeight, HHeight, r);
         }
     }
     //Fill up.

@@ -8,3 +8,4 @@ RTFunc(void, RFNL_MatchInterp_Linear_Gnrc,
 
 RTFunc(void, RFNL_MatchInterp_Cosine_Gnrc,
              _T2* Dest, _C(PMatch_, _T1, _, _T2)* Sorc, _T2 Fill, int Size);
+

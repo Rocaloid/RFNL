@@ -1,5 +1,6 @@
 //Generic Series Mapping, Compression & Expansion Implementation
 
+#include "Interp.h"
 #include <RUtil2.h>
 
 #if 0

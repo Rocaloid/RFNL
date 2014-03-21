@@ -1,4 +1,6 @@
-RTFunc(void, _C(RFNL_MatchInterp, _, _T3),
+//Generic 2nd-Template PMatch Interpolation Implementation
+
+RTFunc(void, _C(RFNL_MatchInterp, _, _T3, _Gnrc),
              _T2* Dest, _C(PMatch_, _T1, _, _T2)* Sorc, _T2 Fill, int Size)
 {
     _T1* XPeak = Sorc -> X;

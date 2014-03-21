@@ -10,6 +10,7 @@
 #include "InterpBase_Gnrc.h"
 #include "GenPeak_Gnrc.h"
 #include "MatchInterp_Gnrc.h"
+#include "MapStretch_Gnrc.h"
 
 #endif
 

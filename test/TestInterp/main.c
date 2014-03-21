@@ -19,7 +19,7 @@ int main()
     RFNL_GenPeak_Gnrc_Float_Float(& Dest, src, 50, 1024);
     PMatch_Float_Float_Print(& Dest);
     for(i = 0; i < 850000; i ++)
-    RFNL_MatchInterp_Linear_Float_Float(src, & Dest, TopOf(Dest.Y), 1024);
+    RFNL_MatchInterp_Linear_Gnrc_Float_Float(src, & Dest, TopOf(Dest.Y), 1024);
     for(i = 0; i < 1024; i ++)
         printf("%4d %9f\n", i, src[i]);
     RDelete(& Dest);

@@ -9,6 +9,7 @@
 
 #include "InterpBase_Gnrc.h"
 #include "GenPeak_Gnrc.h"
+#include "MatchInterp_Gnrc.h"
 
 #endif
 

@@ -7,8 +7,7 @@
         Dest[1] = RCall(BaseName, _T1)(Sorc[1]); \
         Dest[2] = RCall(BaseName, _T1)(Sorc[2]); \
         Dest[3] = RCall(BaseName, _T1)(Sorc[3]); \
-    } \
-    RTFunc(void, PackName, _T1* Dest, _T1* Sorc)
+    }
 
 __RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4Sin, RFNL_Sin);
 __RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4PSin, RFNL_PSin);

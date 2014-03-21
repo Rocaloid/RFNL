@@ -130,7 +130,6 @@ RTFunc(void, RFNL_VCopy_Gnrc, _T1* Dest, _T1* Sorc, int Size)
     for(; i < Size; i ++)
         Dest[i + 0] = Sorc[i + 0];
 }
-
 RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Sorc, int From, int To)
 {
     int i;
@@ -144,7 +143,6 @@ RTFunc(_T1, RFNL_VMaxElmt_Gnrc, _T1* Sorc, int From, int To)
     }
     for(; i < To; i ++)
         Max = Sorc[i + 0] > Max ? Sorc[i + 0] : Max;
-    printf("%f\n", Max);
     return Max;
 }
 

@@ -23,9 +23,9 @@ int main()
     
     Double SorcMatch[6] = {0, 200, 400, 700, 900, 1023};
     Double DestMatch[6] = {0, 100, 200, 800, 950, 1023};
-    for(i = 0; i < 100000; i ++)
-    RFNL_MapStretch_Linear_Cosine_Gnrc_Double_Float(
-        dst, src, SorcMatch, DestMatch, 6, 1024);
+    //for(i = 0; i < 100000; i ++)
+    RFNL_MapStretch_Linear_Gnrc_Double_Float(
+        dst, src, DestMatch, SorcMatch, 6, 1024);
     
     for(i = 0; i < 1024; i ++)
         printf("%4d %9f\n", i, dst[i]);

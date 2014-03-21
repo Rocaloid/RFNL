@@ -3,56 +3,14 @@
 //Let's rock!
 
 #undef _T3
-#undef _T4
 #define _T3 Non
-#define _T4 Non
 #include "_MapStretch_Gnrc_Base.rc"
 
 #undef _T3
-#undef _T4
-#define _T3 Non
-#define _T4 Linear
-#include "_MapStretch_Gnrc_Base.rc"
-
-#undef _T3
-#undef _T4
-#define _T3 Non
-#define _T4 Cosine
-#include "_MapStretch_Gnrc_Base.rc"
-
-#undef _T3
-#undef _T4
 #define _T3 Linear
-#define _T4 Non
 #include "_MapStretch_Gnrc_Base.rc"
 
 #undef _T3
-#undef _T4
-#define _T3 Linear
-#define _T4 Linear
-#include "_MapStretch_Gnrc_Base.rc"
-
-#undef _T3
-#undef _T4
-#define _T3 Linear
-#define _T4 Cosine
-#include "_MapStretch_Gnrc_Base.rc"
-
-#undef _T3
-#undef _T4
 #define _T3 Cosine
-#define _T4 Non
-#include "_MapStretch_Gnrc_Base.rc"
-
-#undef _T3
-#undef _T4
-#define _T3 Cosine
-#define _T4 Linear
-#include "_MapStretch_Gnrc_Base.rc"
-
-#undef _T3
-#undef _T4
-#define _T3 Cosine
-#define _T4 Cosine
 #include "_MapStretch_Gnrc_Base.rc"
 

@@ -80,13 +80,13 @@
                     [Interpolation Methods] - 2nd Template
                     /src/Interp/_MapStretch_Gnrc_Base.rc
             [Group:Resample]
-            /src/Interp/Resample_Gnrc.h*
-            /src/Interp/Resample_Gnrc.c*
+            /src/Interp/Resample_Gnrc.h
+            /src/Interp/Resample_Gnrc.c
                 [Type] - 1st Template
-                /src/Interp/_Resample_Gnrc.h*
-                /src/Interp/_Resample_Gnrc.rc*
+                /src/Interp/_Resample_Gnrc.h
+                /src/Interp/_Resample_Gnrc.rc
                     [Interpolation Methods] - 2nd Template
-                    /src/Interp/_Resample_Gnrc_Base.rc*
+                    /src/Interp/_Resample_Gnrc_Base.rc
             [Group:OffsetFetch]
             /src/Interp/OffsetFetch_Gnrc.h*
             /src/Interp/OffsetFetch_Gnrc.c*

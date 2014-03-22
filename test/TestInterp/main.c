@@ -9,6 +9,7 @@ int main()
     RFNL_Use();
     Float src[1024];
     Float dst[1024];
+    Float dst2[5000];
     for(i = 0; i < 1024; i ++)
     {
         src[i] = RFNL_PSin_Float(i * 0.05f) * i
@@ -26,9 +27,10 @@ int main()
     //for(i = 0; i < 100000; i ++)
     RFNL_MapStretch_Linear_Gnrc_Double_Float(
         dst, src, DestMatch, SorcMatch, 6, 1024);
+    RFNL_Resample_Non_Gnrc_Float(dst2, dst, 5000, 1024);
     
-    for(i = 0; i < 1024; i ++)
-        printf("%4d %9f\n", i, dst[i]);
+    for(i = 0; i < 5000; i ++)
+        printf("%4d %9f\n", i, dst2[i]);
     RDelete(& Dest);
     return 0;
 }

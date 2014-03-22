@@ -11,6 +11,8 @@
 #include "GenPeak_Gnrc.h"
 #include "MatchInterp_Gnrc.h"
 #include "MapStretch_Gnrc.h"
+#include "Resample_Gnrc.h"
+#include "OffsetFetch_Gnrc.h"
 
 #endif
 

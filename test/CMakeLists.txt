@@ -22,10 +22,17 @@ target_link_libraries(TestInterp RFNL)
 target_link_libraries(TestInterp RUtil2)
 target_link_libraries(TestInterp m)
 
+aux_source_directory(./TestWindow Test5)
+add_executable(TestWindow ${Test5})
+target_link_libraries(TestWindow RFNL)
+target_link_libraries(TestWindow RUtil2)
+target_link_libraries(TestWindow m)
+
 add_test(TestDFT TestDFT)
 add_test(TestVec TestVec)
 add_test(TestMath TestMath)
 add_test(TestInterp TestInterp)
+add_test(TestWindow TestWindow)
 
 get_filename_component(TestDir "." ABSOLUTE)
 get_filename_component(TopDir ${CMAKE_SOURCE_DIR} ABSOLUTE)

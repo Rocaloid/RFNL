@@ -97,13 +97,13 @@
                     /src/Interp/_OffsetFetch_Gnrc_Base.rc*
 
     [Module:FWindow]
-    /src/FWindow/FWindow.h*
+    /src/FWindow/FWindow.h
 
         [Arch:Generic]
             [Class:FWindow]
-            /src/FWindow/FWindow_Grnc.h*
-            /src/FWindow/FWindow_Grnc.c*
+            /src/FWindow/FWindow_Gnrc.h
+            /src/FWindow/FWindow_Gnrc.c
                 [Type] - 1st Template
-                /src/FWindow/_FWindow_Grnc.h*
-                /src/FWindow/_FWindow_Grnc.rc*
+                /src/FWindow/_FWindow_Gnrc.h*
+                /src/FWindow/_FWindow_Gnrc.rc*
 

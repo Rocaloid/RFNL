@@ -87,7 +87,7 @@
                 /src/Interp/_Resample_Gnrc.rc
                     [Interpolation Methods] - 2nd Template
                     /src/Interp/_Resample_Gnrc_Base.rc
-            [Group:OffsetFetch]
+            [Group:OffsetFetch]*
             /src/Interp/OffsetFetch_Gnrc.h*
             /src/Interp/OffsetFetch_Gnrc.c*
                 [Type] - 1st Template

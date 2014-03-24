@@ -60,27 +60,31 @@ RTMethod(int , RFNL_FWindow_Gnrc, Initialize)
     if(This -> MaxVar < This -> MinVar || This -> Interval <= 0)
         return 0;
     
+    int Size;
     int MaxSize = INT_MIN;
     int i = 0;
     _T1 Var;
     for(Var = This -> MinVar; Var < This -> MaxVar; Var += This -> Interval)
     {
-        int Size = This -> SizeFunc(Var);
+        Size = This -> SizeFunc(Var);
         MaxSize = Size > MaxSize ? Size : MaxSize;
         //Negative size error
         if(Size < 0) return 0;
         i ++;
     }
+    Size = This -> SizeFunc(This -> MaxVar);
+    MaxSize = Size > MaxSize ? Size : MaxSize;
     
     //Setup array
     _C(RFNL_FWindow_Gnrc_, _T1, _Reset)(This);
     Array_Resize(_T1*, This -> Buff, i);
+    This -> Buff_Index = i - 1;
     for(i = 0; i <= This -> Buff_Index; i ++)
         This -> Buff[i] = RCall(RAlloc, _T1)(MaxSize);
     
     for(i = 0; i <= This -> Buff_Index; i ++)
     {
-        int Size, j, Offset;
+        int j, Offset;
         _T1* IBuff = This -> Buff[i];
         Var = This -> MinVar + This -> Interval * i;
         Size = This -> SizeFunc(Var);
@@ -93,10 +97,34 @@ RTMethod(int , RFNL_FWindow_Gnrc, Initialize)
             IBuff[j] = 0;
     }
     
+    This -> MaxSize = MaxSize;
     return 1;
 }
 
-RTMethod(int , RFNL_FWindow_Gnrc, Generate, _T1* Dest, _T1 Var);
+RTMethod(int , RFNL_FWindow_Gnrc, Generate, _T1* Dest, _T1 Var)
+{
+    _T1 Ratio = (Var - This -> MinVar) / This -> Interval;
+    int LIndex = (int)Ratio;
+    Ratio -= LIndex;
+    
+    _T1 LVar  = This -> MinVar + This -> Interval * LIndex;
+    _T1 HVar  = LVar + This -> Interval;
+    HVar = HVar > This -> MaxVar ? This -> MaxVar : HVar;
+    
+    int Size = This -> SizeFunc(Var);
+    int Offset = (This -> MaxSize - Size) / 2;
+    //printf("%d %d %d\n", This -> MaxSize, Size, Offset);
+    
+    RCall(RFNL_VCMul_Gnrc, _T1)
+        (Dest, This -> Buff[LIndex] + Offset, 1.0 - Ratio, Size);
+    
+    //Overflow prevention
+    if(LIndex >= This -> Buff_Index) LIndex --;
+    RCall(RFNL_VFCMA_Gnrc, _T1)
+        (Dest, This -> Buff[LIndex + 1] + Offset, Ratio, Size);
+    
+    return Size;
+}
 
 RTMethod(void, RFNL_FWindow_Gnrc, Reset)
 {

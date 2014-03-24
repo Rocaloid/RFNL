@@ -18,6 +18,7 @@ RClass(_RTClassName)
     SizeFuncType SizeFunc;
     ValuFuncType ValuFunc;
     
+    int MaxSize;
     Array_Define(_T1*, Buff);
 };
 

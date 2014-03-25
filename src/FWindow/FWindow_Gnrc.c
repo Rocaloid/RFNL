@@ -1,5 +1,17 @@
 //Generic Fast Window Generator Implementation
 
+#define __RFNL_Unroll_Window4_Gnrc(Func) \
+    int i; \
+    for(i = 0; i < Size -3; i += 4) \
+    { \
+        Dest[i + 0] = Sorc[i + 0] * Func(i + 0); \
+        Dest[i + 1] = Sorc[i + 1] * Func(i + 1); \
+        Dest[i + 2] = Sorc[i + 2] * Func(i + 2); \
+        Dest[i + 3] = Sorc[i + 3] * Func(i + 3); \
+    } \
+    for(; i < Size; i ++) \
+        Dest[i + 0] = Sorc[i + 0] * Func(i + 0)
+
 #include "FWindow.h"
 #include "../Vec/Vec.h"
 #include <RUtil2.h>

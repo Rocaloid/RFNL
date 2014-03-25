@@ -38,3 +38,8 @@ RTFunc(int, RFNL_Hamming_Size_Gnrc, _T1 Var);
 RTFunc(_T1, RFNL_Blackman_Valu_Gnrc, _T1 Var, int Size);
 RTFunc(int, RFNL_Blackman_Size_Gnrc, _T1 Var);
 
+//Instant Window
+RTFunc(void, RFNL_Hanning_Gnrc, _T1* Dest, _T1* Sorc, int Size);
+RTFunc(void, RFNL_Hamming_Gnrc, _T1* Dest, _T1* Sorc, int Size);
+RTFunc(void, RFNL_Blackman_Gnrc, _T1* Dest, _T1* Sorc, int Size);
+

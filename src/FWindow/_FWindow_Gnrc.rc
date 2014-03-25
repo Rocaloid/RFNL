@@ -68,6 +68,7 @@ RTMethod(int , RFNL_FWindow_Gnrc, Initialize)
     for(i = 0; i <= This -> Buff_Index; i ++)
         This -> Buff[i] = RCall(RAlloc, _T1)(MaxSize);
     
+    //Generate Windows
     for(i = 0; i <= This -> Buff_Index; i ++)
     {
         int j, Offset;
@@ -75,6 +76,8 @@ RTMethod(int , RFNL_FWindow_Gnrc, Initialize)
         Var = This -> MinVar + This -> Interval * i;
         Size = This -> SizeFunc(Var);
         Offset = (MaxSize - Size) / 2;
+        
+        //Put window at the center of IBuff.
         for(j = 0; j < Offset; j ++)
             IBuff[j] = 0;
         for(; j < MaxSize - Offset; j ++)
@@ -145,11 +148,41 @@ RTFunc(_T1, RFNL_Blackman_Valu_Gnrc, _T1 Var, int Size)
 {
     _T1 RealSize = Size - 1.0f;
     return 0.42f - 0.5f
-        * RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var * Var / RealSize)
-        + 0.08f * RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var / RealSize);
+        * RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var / RealSize)
+        + 0.08f * RCall(RFNL_PCos_Gnrc, _T1)(4 * M_PI * Var / RealSize);
 }
 RTFunc(int, RFNL_Blackman_Size_Gnrc, _T1 Var)
 {
     return (int)Var;
+}
+
+#undef  __RFNL_Hanning
+#undef  __RFNL_Hamming
+#undef  __RFNL_Blackman
+#define __RFNL_Hanning(i) \
+    0.5f * (1.0f - RCall(RFNL_PCos_Gnrc, _T1)((i) * Factor))
+#define __RFNL_Hamming(i) \
+    0.54f - 0.46f * RCall(RFNL_PCos_Gnrc, _T1)((i) * Factor)
+#define __RFNL_Blackman(i) \
+    0.42f - 0.5f * RCall(RFNL_PCos_Gnrc, _T1)((i) * Factor) \
+          + 0.08f * RCall(RFNL_PCos_Gnrc, _T1)((i) * Factor * 2.0f)
+
+//Instant Window
+RTFunc(void, RFNL_Hanning_Gnrc, _T1* Dest, _T1* Sorc, int Size)
+{
+    _T1 Factor = 2.0f * M_PI / (Size - 1.0f);
+    __RFNL_Unroll_Window4_Gnrc(__RFNL_Hanning);
+}
+
+RTFunc(void, RFNL_Hamming_Gnrc, _T1* Dest, _T1* Sorc, int Size)
+{
+    _T1 Factor = 2.0f * M_PI / (Size - 1.0f);
+    __RFNL_Unroll_Window4_Gnrc(__RFNL_Hamming);
+}
+
+RTFunc(void, RFNL_Blackman_Gnrc, _T1* Dest, _T1* Sorc, int Size)
+{
+    _T1 Factor = 2.0f * M_PI / (Size - 1.0f);
+    __RFNL_Unroll_Window4_Gnrc(__RFNL_Blackman);
 }
 

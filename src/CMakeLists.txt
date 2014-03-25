@@ -34,7 +34,13 @@ install(FILES Interp/Interp.h
               Interp/_MatchInterp_Gnrc.h
               Interp/MapStretch_Gnrc.h
               Interp/_MapStretch_Gnrc.h
+              Interp/OffsetFetch_Gnrc.h
+              Interp/_OffsetFetch_Gnrc.h
               DESTINATION /usr/include/RFNL/Interp/)
+install(FILES FWindow/FWindow.h
+              FWindow/FWindow_Gnrc.h
+              FWindow/_FWindow_Gnrc.h
+              DESTINATION /usr/include/RFNL/FWindow/)
 install(FILES Include/RFNL.h
               DESTINATION /usr/include/)
 

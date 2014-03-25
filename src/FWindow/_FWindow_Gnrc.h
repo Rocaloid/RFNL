@@ -30,3 +30,11 @@ RTMethod(int , RFNL_FWindow_Gnrc, Initialize);
 RTMethod(int , RFNL_FWindow_Gnrc, Generate, _T1* Dest, _T1 Var);
 RTMethod(void, RFNL_FWindow_Gnrc, Reset);
 
+//Common Windows
+RTFunc(_T1, RFNL_Hanning_Valu_Gnrc, _T1 Var, int Size);
+RTFunc(int, RFNL_Hanning_Size_Gnrc, _T1 Var);
+RTFunc(_T1, RFNL_Hamming_Valu_Gnrc, _T1 Var, int Size);
+RTFunc(int, RFNL_Hamming_Size_Gnrc, _T1 Var);
+RTFunc(_T1, RFNL_Blackman_Valu_Gnrc, _T1 Var, int Size);
+RTFunc(int, RFNL_Blackman_Size_Gnrc, _T1 Var);
+

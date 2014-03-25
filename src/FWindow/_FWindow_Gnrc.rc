@@ -4,20 +4,6 @@
 #undef ValuFuncType
 #define SizeFuncType _C(RFNL_FWSizeFunc, _, _T1)
 #define ValuFuncType _C(RFNL_FWValuFunc, _, _T1)
-/*
-RClass(_RTClassName)
-{
-    RInherit(RObject);
-    _T1 MinVar;
-    _T1 MaxVar;
-    _T1 Interval;
-    
-    SizeFuncType SizeFunc;
-    ValuFuncType ValuFunc;
-    
-    Array_Define(_T1*, Buff);
-};
-*/
 
 RCtor(_RTClassName)
 {
@@ -132,5 +118,38 @@ RTMethod(void, RFNL_FWindow_Gnrc, Reset)
     for(i = 0; i <= This -> Buff_Index; i ++)
         RFree(This -> Buff[i]);
     This -> Buff_Index = - 1;
+}
+
+//Common Windows
+RTFunc(_T1, RFNL_Hanning_Valu_Gnrc, _T1 Var, int Size)
+{
+    return 0.5f * (1.0f - 
+        RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var / (Size - 1.0f)));
+}
+RTFunc(int, RFNL_Hanning_Size_Gnrc, _T1 Var)
+{
+    return (int)Var;
+}
+
+RTFunc(_T1, RFNL_Hamming_Valu_Gnrc, _T1 Var, int Size)
+{
+    return 0.54f - 0.46f *
+        RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var / (Size - 1.0f));
+}
+RTFunc(int, RFNL_Hamming_Size_Gnrc, _T1 Var)
+{
+    return (int)Var;
+}
+
+RTFunc(_T1, RFNL_Blackman_Valu_Gnrc, _T1 Var, int Size)
+{
+    _T1 RealSize = Size - 1.0f;
+    return 0.42f - 0.5f
+        * RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var * Var / RealSize)
+        + 0.08f * RCall(RFNL_PCos_Gnrc, _T1)(2 * M_PI * Var / RealSize);
+}
+RTFunc(int, RFNL_Blackman_Size_Gnrc, _T1 Var)
+{
+    return (int)Var;
 }
 

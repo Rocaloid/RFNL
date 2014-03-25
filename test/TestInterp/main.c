@@ -12,9 +12,9 @@ int main()
     Float dst2[5000];
     for(i = 0; i < 1024; i ++)
     {
-        src[i] = RFNL_PSin_Float(i * 0.05f) * i
-               + fabs(RFNL_PTan_Float(i)) > 0.5 ?
-                 0.5 : fabs(RFNL_PTan_Float(i));
+        src[i] = RFNL_PSin_Gnrc_Float(i * 0.05f) * i
+               + fabs(RFNL_PTan_Gnrc_Float(i)) > 0.5 ?
+                 0.5 : fabs(RFNL_PTan_Gnrc_Float(i));
     }
     PMatch_Float_Float Dest;
     RNew(PMatch_Float_Float, & Dest);

@@ -1,12 +1,12 @@
 //Generic Template Packed Fast Math Header & Implementation
 
 #define __RFNL_Define_Pk4Trig_Gnrc(PackName, BaseName) \
-    RTFunc(void __inline__, PackName, _T1* Dest, _T1* Sorc) \
+    RTFunc(void __inline__, _C(PackName, _, Gnrc), _T1* Dest, _T1* Sorc) \
     { \
-        Dest[0] = RCall(BaseName, _T1)(Sorc[0]); \
-        Dest[1] = RCall(BaseName, _T1)(Sorc[1]); \
-        Dest[2] = RCall(BaseName, _T1)(Sorc[2]); \
-        Dest[3] = RCall(BaseName, _T1)(Sorc[3]); \
+        Dest[0] = _C(BaseName, _Gnrc_, _T1)(Sorc[0]); \
+        Dest[1] = _C(BaseName, _Gnrc_, _T1)(Sorc[1]); \
+        Dest[2] = _C(BaseName, _Gnrc_, _T1)(Sorc[2]); \
+        Dest[3] = _C(BaseName, _Gnrc_, _T1)(Sorc[3]); \
     }
 
 __RFNL_Define_Pk4Trig_Gnrc(RFNL_Pk4Sin, RFNL_Sin);

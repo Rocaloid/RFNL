@@ -15,13 +15,13 @@ int main()
     
     for(i = 0; i < 1000 - 3; i += 4)
     {
-        //ret1 = RFNL_PTan_Float(0.2f * i);
+        //ret1 = RFNL_PTan_Gnrc_Float(0.2f * i);
         src[0] = 0.2f * (i + 0);
         src[1] = 0.2f * (i + 1);
         src[2] = 0.2f * (i + 2);
         src[3] = 0.2f * (i + 3);
         
-        RFNL_Pk4PCos_Float(tmp, src);
+        RFNL_Pk4PCos_Gnrc_Float(tmp, src);
         
         printf("%.9f\n", tmp[0] - cos(src[0]));
         printf("%.9f\n", tmp[1] - cos(src[1]));
@@ -31,7 +31,7 @@ int main()
         sum2 += ret2;
     }
     /*
-    #define _sin RFNL_PSin_LPrec_Float
+    #define _sin RFNL_PSin_LPrec_Gnrc_Float
     for(i = 0; i < 10000000; i ++)
     {
         sum1 += _sin(0.2f * i);

@@ -13,6 +13,6 @@ RTFunc(_T1 __inline__, RFNL_Interp_Linear_Gnrc, _T1 a0, _T1 a1, _T1 r)
 RTFunc(_T1 __inline__, RFNL_Interp_Cosine_Gnrc, _T1 a0, _T1 a1, _T1 r)
 {
     return a0 - 0.5f * (a1 - a0) * 
-        (RCall(RFNL_PCos_LPrec, _T1)(r * M_PI) - 1.0f);
+        (RCall(RFNL_PCos_LPrec_Gnrc, _T1)(r * M_PI) - 1.0f);
 }
 

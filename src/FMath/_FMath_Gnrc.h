@@ -24,7 +24,7 @@
     return _C(Table, _, _T1)[i]
 
 //Sine
-RTFunc(_T1 __inline__, RFNL_Sin, _T1 x)
+RTFunc(_T1 __inline__, RFNL_Sin_Gnrc, _T1 x)
 {
     _T1 r;
     int i;
@@ -37,7 +37,7 @@ RTFunc(_T1 __inline__, RFNL_Sin, _T1 x)
 }
 
 //Low precision(no interpolation) sine
-RTFunc(_T1 __inline__, RFNL_Sin_LPrec, _T1 x)
+RTFunc(_T1 __inline__, RFNL_Sin_LPrec_Gnrc, _T1 x)
 {
     int i;
     
@@ -48,7 +48,7 @@ RTFunc(_T1 __inline__, RFNL_Sin_LPrec, _T1 x)
 }
 
 //Positive-only sine
-RTFunc(_T1 __inline__, RFNL_PSin, _T1 x)
+RTFunc(_T1 __inline__, RFNL_PSin_Gnrc, _T1 x)
 {
     _T1 r;
     int i;
@@ -60,7 +60,7 @@ RTFunc(_T1 __inline__, RFNL_PSin, _T1 x)
 }
 
 //Positive-only, low precision(no interpolation) sine
-RTFunc(_T1 __inline__, RFNL_PSin_LPrec, _T1 x)
+RTFunc(_T1 __inline__, RFNL_PSin_LPrec_Gnrc, _T1 x)
 {
     int i;
     
@@ -70,7 +70,7 @@ RTFunc(_T1 __inline__, RFNL_PSin_LPrec, _T1 x)
 }
 
 //Cosine
-RTFunc(_T1 __inline__, RFNL_Cos, _T1 x)
+RTFunc(_T1 __inline__, RFNL_Cos_Gnrc, _T1 x)
 {
     _T1 r;
     int i;
@@ -83,7 +83,7 @@ RTFunc(_T1 __inline__, RFNL_Cos, _T1 x)
 }
 
 //Low precision(no interpolation) cosine
-RTFunc(_T1 __inline__, RFNL_Cos_LPrec, _T1 x)
+RTFunc(_T1 __inline__, RFNL_Cos_LPrec_Gnrc, _T1 x)
 {
     int i;
     
@@ -94,7 +94,7 @@ RTFunc(_T1 __inline__, RFNL_Cos_LPrec, _T1 x)
 }
 
 //Positive-only cosine
-RTFunc(_T1 __inline__, RFNL_PCos, _T1 x)
+RTFunc(_T1 __inline__, RFNL_PCos_Gnrc, _T1 x)
 {
     _T1 r;
     int i;
@@ -106,7 +106,7 @@ RTFunc(_T1 __inline__, RFNL_PCos, _T1 x)
 }
 
 //Positive-only, low precision(no interpolation) cosine
-RTFunc(_T1 __inline__, RFNL_PCos_LPrec, _T1 x)
+RTFunc(_T1 __inline__, RFNL_PCos_LPrec_Gnrc, _T1 x)
 {
     int i;
     
@@ -117,24 +117,26 @@ RTFunc(_T1 __inline__, RFNL_PCos_LPrec, _T1 x)
 
 //Tan
 
-RTFunc(_T1 __inline__, RFNL_Tan, _T1 x)
+RTFunc(_T1 __inline__, RFNL_Tan_Gnrc, _T1 x)
 {
-    return RCall(RFNL_Sin, _T1)(x) / RCall(RFNL_Cos, _T1)(x);
+    return RCall(RFNL_Sin_Gnrc, _T1)(x) / RCall(RFNL_Cos_Gnrc, _T1)(x);
 }
 
-RTFunc(_T1 __inline__, RFNL_PTan, _T1 x)
+RTFunc(_T1 __inline__, RFNL_PTan_Gnrc, _T1 x)
 {
-    return RCall(RFNL_PSin, _T1)(x) / RCall(RFNL_PCos, _T1)(x);
+    return RCall(RFNL_PSin_Gnrc, _T1)(x) / RCall(RFNL_PCos_Gnrc, _T1)(x);
 }
 
-RTFunc(_T1 __inline__, RFNL_Tan_LPrec, _T1 x)
+RTFunc(_T1 __inline__, RFNL_Tan_LPrec_Gnrc, _T1 x)
 {
-    return RCall(RFNL_Sin_LPrec, _T1)(x) / RCall(RFNL_Cos_LPrec, _T1)(x);
+    return RCall(RFNL_Sin_LPrec_Gnrc, _T1)(x) / 
+           RCall(RFNL_Cos_LPrec_Gnrc, _T1)(x);
 }
 
-RTFunc(_T1 __inline__, RFNL_PTan_LPrec, _T1 x)
+RTFunc(_T1 __inline__, RFNL_PTan_LPrec_Gnrc, _T1 x)
 {
-    return RCall(RFNL_PSin_LPrec, _T1)(x) / RCall(RFNL_PCos_LPrec, _T1)(x);
+    return RCall(RFNL_PSin_LPrec_Gnrc, _T1)(x) / 
+           RCall(RFNL_PCos_LPrec_Gnrc, _T1)(x);
 }
 
 #include "_FMath_Pk_Gnrc.h"

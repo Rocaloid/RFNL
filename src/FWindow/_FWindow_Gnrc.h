@@ -43,3 +43,7 @@ RTFunc(void, RFNL_Hanning_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 RTFunc(void, RFNL_Hamming_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 RTFunc(void, RFNL_Blackman_Gnrc, _T1* Dest, _T1* Sorc, int Size);
 
+RTFunc(void, RFNL_GenHanning_Gnrc, _T1* Dest, int Size);
+RTFunc(void, RFNL_GenHamming_Gnrc, _T1* Dest, int Size);
+RTFunc(void, RFNL_GenBlackman_Gnrc, _T1* Dest, int Size);
+

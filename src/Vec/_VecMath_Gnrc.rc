@@ -113,13 +113,13 @@ RTFunc(void, RFNL_VCplxArg_Gnrc, _T1* Dest,
     int i;
     for(i = 0; i < Size - 3; i += 4)
     {
-        Dest[i + 0] = __RFNL_Atan2(SorcReal[i + 0], SorcImag[i + 0]);
-        Dest[i + 1] = __RFNL_Atan2(SorcReal[i + 1], SorcImag[i + 1]);
-        Dest[i + 2] = __RFNL_Atan2(SorcReal[i + 2], SorcImag[i + 2]);
-        Dest[i + 3] = __RFNL_Atan2(SorcReal[i + 3], SorcImag[i + 3]);
+        Dest[i + 0] = __RFNL_Atan2(SorcImag[i + 0], SorcReal[i + 0]);
+        Dest[i + 1] = __RFNL_Atan2(SorcImag[i + 1], SorcReal[i + 1]);
+        Dest[i + 2] = __RFNL_Atan2(SorcImag[i + 2], SorcReal[i + 2]);
+        Dest[i + 3] = __RFNL_Atan2(SorcImag[i + 3], SorcReal[i + 3]);
     }
     for(; i < Size; i ++)
-        Dest[i + 0] = __RFNL_Atan2(SorcReal[i + 0], SorcImag[i + 0]);    
+        Dest[i + 0] = __RFNL_Atan2(SorcImag[i + 0], SorcReal[i + 0]);    
 }
 
 RTFunc(void, RFNL_VSin_Gnrc, _T1* Dest, _T1* Sorc, int Size)

@@ -186,3 +186,21 @@ RTFunc(void, RFNL_Blackman_Gnrc, _T1* Dest, _T1* Sorc, int Size)
     __RFNL_Unroll_Window4_Gnrc(__RFNL_Blackman);
 }
 
+RTFunc(void, RFNL_GenHanning_Gnrc, _T1* Dest, int Size)
+{
+    _T1 Factor = 2.0f * M_PI / (Size - 1.0f);
+    __RFNL_Unroll_CWindow4_Gnrc(__RFNL_Hanning);
+}
+
+RTFunc(void, RFNL_GenHamming_Gnrc, _T1* Dest, int Size)
+{
+    _T1 Factor = 2.0f * M_PI / (Size - 1.0f);
+    __RFNL_Unroll_CWindow4_Gnrc(__RFNL_Hamming);
+}
+
+RTFunc(void, RFNL_GenBlackman_Gnrc, _T1* Dest, int Size)
+{
+    _T1 Factor = 2.0f * M_PI / (Size - 1.0f);
+    __RFNL_Unroll_CWindow4_Gnrc(__RFNL_Blackman);
+}
+

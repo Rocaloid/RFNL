@@ -46,5 +46,9 @@ install(FILES FWindow/FWindow.h
 install(FILES Include/RFNL.h
               DESTINATION /usr/include/)
 
-install(TARGETS RFNL LIBRARY DESTINATION /usr/lib)
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    install(TARGETS RFNL LIBRARY DESTINATION /usr/lib64)
+else(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    install(TARGETS RFNL LIBRARY DESTINATION /usr/lib)
+endif(CMAKE_SIZEOF_VOID_P EQUAL 8)
 

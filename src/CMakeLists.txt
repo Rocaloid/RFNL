@@ -9,6 +9,7 @@ set(CMAKE_C_FLAGS "-Ofast -I${TopDir}/src")
 
 add_library(RFNL SHARED ${SRC_LIST})
 target_include_directories(RFNL PUBLIC "${CMAKE_SOURCE_DIR}/src")
+TARGET_LINK_LIBRARIES(RFNL RUtil2)
 
 install(FILES DFT/DFT.h
               DFT/BitRev.h
@@ -46,9 +47,28 @@ install(FILES FWindow/FWindow.h
 install(FILES Include/RFNL.h
               DESTINATION /usr/include/)
 
-if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    install(TARGETS RFNL LIBRARY DESTINATION /usr/lib64)
-else(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    install(TARGETS RFNL LIBRARY DESTINATION /usr/lib)
-endif(CMAKE_SIZEOF_VOID_P EQUAL 8)
-
+if(CYGWIN)
+    MESSAGE("")
+    MESSAGE("=======     BEGIN WARNING     =======")
+    MESSAGE("You are building this project in Cygwin!")
+    MESSAGE("All static libraries will be installed in /usr/lib!")
+    MESSAGE("And shared libraries will be installed in /usr/bin!")
+    MESSAGE("=======      END WARNING      =======")
+    MESSAGE("")
+    SET_TARGET_PROPERTIES(RFNL PROPERTIES CMAKE_SHARED_LIBRARY_PREFIX "cyg")
+    SET(CMAKE_FIND_LIBRARY_SUFFIXES ".dll" ".dll.a" ".a")
+    install(TARGETS RFNL 
+            ARCHIVE DESTINATION /usr/lib
+            LIBRARY DESTINATION /usr/bin
+            COMPONENT library)
+elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    install(TARGETS RFNL 
+            ARCHIVE DESTINATION /usr/lib64
+            LIBRARY DESTINATION /usr/lib64
+            COMPONENT library)
+else()
+    install(TARGETS RFNL 
+            ARCHIVE DESTINATION /usr/lib
+            LIBRARY DESTINATION /usr/lib
+            COMPONENT library)
+endif()

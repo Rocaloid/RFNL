@@ -9,7 +9,6 @@ set(CMAKE_C_FLAGS "-Ofast -I${TopDir}/src")
 
 add_library(RFNL SHARED ${SRC_LIST})
 target_include_directories(RFNL PUBLIC "${CMAKE_SOURCE_DIR}/src")
-TARGET_LINK_LIBRARIES(RFNL RUtil2)
 
 install(FILES DFT/DFT.h
               DFT/BitRev.h

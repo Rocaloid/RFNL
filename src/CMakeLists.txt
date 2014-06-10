@@ -16,16 +16,16 @@ install(FILES DFT/DFT.h
               DFT/_DFT_Gnrc.h
               DFT/_DFT_Arch.h
               DFT/_BitRev_Gnrc.h
-              DESTINATION /usr/include/RFNL/DFT/)
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/include/RFNL/DFT/)
 install(FILES FMath/FMath.h
               FMath/_FMath_Comm.h
               FMath/_FMath_Gnrc.h
               FMath/_FMath_Pk_Gnrc.h
-              DESTINATION /usr/include/RFNL/FMath/)
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/include/RFNL/FMath/)
 install(FILES Vec/Vec.h
               Vec/_VecBasic_Gnrc.h
               Vec/_VecMath_Gnrc.h
-              DESTINATION /usr/include/RFNL/Vec/)
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/include/RFNL/Vec/)
 install(FILES Interp/Interp.h
               Interp/InterpBase_Gnrc.h
               Interp/_InterpBase_Gnrc.h
@@ -39,36 +39,33 @@ install(FILES Interp/Interp.h
               Interp/_OffsetFetch_Gnrc.h
               Interp/Resample_Gnrc.h
               Interp/_Resample_Gnrc.h
-              DESTINATION /usr/include/RFNL/Interp/)
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/include/RFNL/Interp/)
 install(FILES FWindow/FWindow.h
               FWindow/FWindow_Gnrc.h
               FWindow/_FWindow_Gnrc.h
-              DESTINATION /usr/include/RFNL/FWindow/)
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/include/RFNL/FWindow/)
 install(FILES Include/RFNL.h
-              DESTINATION /usr/include/)
+              DESTINATION ${CMAKE_INSTALL_PREFIX}/include/)
 
-if(CYGWIN)
-    MESSAGE("")
-    MESSAGE("=======     BEGIN WARNING     =======")
-    MESSAGE("You are building this project in Cygwin!")
-    MESSAGE("All static libraries will be installed in /usr/lib!")
-    MESSAGE("And shared libraries will be installed in /usr/bin!")
-    MESSAGE("=======      END WARNING      =======")
-    MESSAGE("")
-    SET_TARGET_PROPERTIES(RFNL PROPERTIES CMAKE_SHARED_LIBRARY_PREFIX "cyg")
-    SET(CMAKE_FIND_LIBRARY_SUFFIXES ".dll" ".dll.a" ".a")
+if(CYGWIN OR WIN32)
+    message(STATUS "You are compiling this project as COFF.")
     install(TARGETS RFNL 
-            ARCHIVE DESTINATION /usr/lib
-            LIBRARY DESTINATION /usr/bin
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+            LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+            RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
             COMPONENT library)
 elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    message(STATUS "You are compiling this project as 64bit.")
     install(TARGETS RFNL 
-            ARCHIVE DESTINATION /usr/lib64
-            LIBRARY DESTINATION /usr/lib64
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib64
+            LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib64
+            COMPONENT library)
+elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    message(STATUS "You are compiling this project as 32bit.")
+    install(TARGETS RFNL 
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+            LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
             COMPONENT library)
 else()
-    install(TARGETS RFNL 
-            ARCHIVE DESTINATION /usr/lib
-            LIBRARY DESTINATION /usr/lib
-            COMPONENT library)
+    message(FATAL_ERROR "Your system is unsupported!")
 endif()

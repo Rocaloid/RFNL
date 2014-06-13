@@ -6,9 +6,12 @@ aux_source_directory(./Vec SRC_LIST)
 aux_source_directory(. SRC_LIST)
 
 set(CMAKE_C_FLAGS "-Ofast -I${TopDir}/src")
+#set(CMAKE_SHARED_LINKER_FLAGS "")
 
 add_library(RFNL SHARED ${SRC_LIST})
 target_include_directories(RFNL PUBLIC "${CMAKE_SOURCE_DIR}/src")
+target_link_libraries(RFNL RUtil2)
+target_link_libraries(RFNL m)
 
 install(FILES DFT/DFT.h
               DFT/BitRev.h
@@ -48,23 +51,14 @@ install(FILES Include/RFNL.h
 
 if(CYGWIN OR WIN32)
     message(STATUS "You are compiling this project as COFF.")
-    install(TARGETS RFNL 
-            ARCHIVE DESTINATION /usr/lib
-            LIBRARY DESTINATION /usr/lib
-            RUNTIME DESTINATION /usr/bin
-            COMPONENT library)
+    install(TARGETS RFNL DESTINATION /usr/lib)
 elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
     message(STATUS "You are compiling this project as 64bit.")
-    install(TARGETS RFNL 
-            ARCHIVE DESTINATION /usr/lib64
-            LIBRARY DESTINATION /usr/lib64
-            COMPONENT library)
+    install(TARGETS RFNL DESTINATION /usr/lib64)
 elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
     message(STATUS "You are compiling this project as 32bit.")
-    install(TARGETS RFNL 
-            ARCHIVE DESTINATION /usr/lib
-            LIBRARY DESTINATION /usr/lib
-            COMPONENT library)
+    install(TARGETS RFNL DESTINATION /usr/lib)
 else()
     message(FATAL_ERROR "Your system is unsupported!")
 endif()
+

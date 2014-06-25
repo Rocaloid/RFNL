@@ -5,9 +5,13 @@
 #undef __RFNL_Trig_InterpRet
 #undef __RFNL_Trig_NoInterpRet
 
-#define __RFNL_Trig_CheckSign() \
+#define __RFNL_Trig_SinCheckSign() \
     if(x < 0) \
         x = M_PI - x
+
+#define __RFNL_Trig_CosCheckSign() \
+    if(x < 0) \
+        x = - x
 
 #define __RFNL_Trig_Indexing() \
     x = x / M_PI / 2.0f; \
@@ -29,7 +33,7 @@ RTFunc(_T1 __inline__, RFNL_Sin_Gnrc, _T1 x)
     _T1 r;
     int i;
     
-    __RFNL_Trig_CheckSign();
+    __RFNL_Trig_SinCheckSign();
     __RFNL_Trig_Indexing();
     r = x - i;
     
@@ -41,7 +45,7 @@ RTFunc(_T1 __inline__, RFNL_Sin_LPrec_Gnrc, _T1 x)
 {
     int i;
     
-    __RFNL_Trig_CheckSign();
+    __RFNL_Trig_SinCheckSign();
     __RFNL_Trig_Indexing();
     
     __RFNL_Trig_NoInterpRet(__RFNL_SinTable);
@@ -75,7 +79,7 @@ RTFunc(_T1 __inline__, RFNL_Cos_Gnrc, _T1 x)
     _T1 r;
     int i;
     
-    __RFNL_Trig_CheckSign();
+    __RFNL_Trig_CosCheckSign();
     __RFNL_Trig_Indexing();
     r = x - i;
     
@@ -87,7 +91,7 @@ RTFunc(_T1 __inline__, RFNL_Cos_LPrec_Gnrc, _T1 x)
 {
     int i;
     
-    __RFNL_Trig_CheckSign();
+    __RFNL_Trig_CosCheckSign();
     __RFNL_Trig_Indexing();
     
     __RFNL_Trig_NoInterpRet(__RFNL_CosTable);

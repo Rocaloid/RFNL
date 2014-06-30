@@ -5,7 +5,7 @@ aux_source_directory(./Interp SRC_LIST)
 aux_source_directory(./Vec SRC_LIST)
 aux_source_directory(. SRC_LIST)
 
-set(CMAKE_C_FLAGS "-Ofast -I${TopDir}/src -fPIC")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${TopDir}/src -fPIC")
 set(CMAKE_SHARED_LINKER_FLAGS "-fPIC")
 
 add_library(RFNL SHARED ${SRC_LIST})

@@ -31,6 +31,6 @@ add_test(TestWindow TestWindow)
 
 get_filename_component(TestDir "." ABSOLUTE)
 get_filename_component(TopDir ${CMAKE_SOURCE_DIR} ABSOLUTE)
-set(CMAKE_C_FLAGS "-Ofast -I${TestDir}/TestDFT -I${TopDir}/src")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -I${TestDir}/TestDFT -I${TopDir}/src")
 set(CMAKE_EXE_LINKER_FLAGS "-Wl,--allow-multiple-definition")
 

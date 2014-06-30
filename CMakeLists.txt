@@ -1,7 +1,18 @@
 cmake_minimum_required(VERSION 2.8.4)
 project(RFNL)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Debug")
+endif()
+
 add_definitions(-std=gnu99 -Wall)
+
+# Because of inline functions, we cannot use -O0 for debug.
+set(CMAKE_C_FLAGS_DEBUG "-O1 -ffast-math -g")
+set(CMAKE_C_FLAGS_RELEASE "-Ofast")
+
+set(CMAKE_LD_FLAGS_DEBUG "-Wl,-O0,-rdynamic")
+set(CMAKE_LD_FLAGS_RELEASE "-Wl,-O1,--as-needed,--sort-common")
 
 enable_testing()
 

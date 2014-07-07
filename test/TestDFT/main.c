@@ -30,6 +30,7 @@ int main()
     RFree(Imag);
     RFree(DReal);
     RFree(DImag);
+    RFree(Temp);
     return 0;
 }
 

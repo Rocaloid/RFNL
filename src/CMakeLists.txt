@@ -49,22 +49,7 @@ install(FILES FWindow/FWindow.h
 install(FILES Include/RFNL.h
               DESTINATION ${CMAKE_INSTALL_PREFIX}/include/)
 
-if(CYGWIN OR WIN32)
-    message(STATUS "You are compiling this project as COFF.")
-    install(TARGETS RFNL LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-                         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-                         RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    message(STATUS "You are compiling this project as 64bit.")
-    install(TARGETS RFNL LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib64
-                         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib64
-                         RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
-    message(STATUS "You are compiling this project as 32bit.")
-    install(TARGETS RFNL LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-                         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-                         RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-else()
-    message(FATAL_ERROR "Your system is unsupported!")
-endif()
+install(TARGETS RFNL LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
+                     ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}
+                     RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 

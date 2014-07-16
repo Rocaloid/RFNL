@@ -20,5 +20,7 @@ void __RFNL_RUtil2_Link()
     Sort_Inc_Float((void*)0, (void*)0, 0);      //Sort
     PMatch_Float_Float_Ctor((void*)0);          //PMatch
     String_Ctor((void*)0);                      //String
+    Base64_Encode((void*)0, (void*)0, 0);       //Base64
+    Tune_SetPitchNameMode(0);                   //Tune
 }
 

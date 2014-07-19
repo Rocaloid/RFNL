@@ -22,5 +22,6 @@ void __RFNL_RUtil2_Link()
     String_Ctor((void*)0);                      //String
     Base64_Encode((void*)0, (void*)0, 0);       //Base64
     Tune_SetPitchNameMode(0);                   //Tune
+    CRC32Sum((void*)0, 0, 0);                   //CRC32
 }
 

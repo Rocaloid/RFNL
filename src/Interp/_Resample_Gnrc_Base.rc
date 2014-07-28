@@ -7,7 +7,7 @@ RTFunc(void, _C(RFNL_Resample_, _T2, _Gnrc),
     int i;
     DestSize --;
     SorcSize --;
-    for(i = 0; i <= DestSize; i ++)
+    for(i = 0; i < DestSize; i ++)
     {
         _T1 SrcP = (_T1)i / DestSize * SorcSize;        //Sorc Position
         int SrcI = (int)SrcP;                           //Sorc Index

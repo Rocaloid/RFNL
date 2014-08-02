@@ -17,16 +17,16 @@ RTFunc(void, _C(RFNL_MapStretch, _, _T3, _Gnrc),
         SrcD = SrcH - SrcL;
         DstD = DstH - DstL;
         
-        for(j = DstL; j <= DstH; j ++)
+        for(j = DstL; j < DstH; j ++)
         {
             //Map & Stretch
-            int DstI     = (int)j;                       //Dest Index
-            _T1 DstR     = ((_T1)DstI - DstL) / DstD;    //Dest Ratio
+            int DstI = (int)j;                       //Dest Index
+            _T1 DstR = ((_T1)DstI - DstL) / DstD;    //Dest Ratio
             //Indexing Interpolation
-            _T1 SrcP     = RCall(RFNL_Interp_Linear_Gnrc, _T1)
-                (SrcL, SrcH, DstR);                      //Sorc Position
-            int SrcI     = (int)SrcP;                    //Sorc Index
-            _T1 SrcR     = SrcP - (_T1)SrcI;             //Sorc Ratio
+            _T1 SrcP = RCall(RFNL_Interp_Linear_Gnrc, _T1)
+                (SrcL, SrcH, DstR);                  //Sorc Position
+            int SrcI = (int)SrcP;                    //Sorc Index
+            _T1 SrcR = SrcP - (_T1)SrcI;             //Sorc Ratio
             
             //Dumping Interpolation
             Dest[DstI] = _C(RFNL_Interp_, _T3, _Gnrc_, _T1)

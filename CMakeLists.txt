@@ -10,7 +10,7 @@ add_definitions(-std=gnu99 -Wall)
 if(${CMAKE_SYSTEM_PROCESSOR} MATCHES armv7l)
     #Make it support armv7 platform
     add_definitions(-march=armv7 -mfloat-abi=hard -mfpu=neon)
-elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64* OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES amd64*)
+elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES x86_64* OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES amd64* OR ${CMAKE_SYSTEM_NAME} MATCHES Darwin*)
     add_definitions(-march=x86-64 -mtune=generic -mtune=core2 -mtune=core-avx-i)
 elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES i686* OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES i386*)
     add_definitions(-march=i686 -mtune=generic -mtune=core2 -mtune=core-avx-i)
@@ -40,4 +40,7 @@ add_custom_target(uninstall
 
 add_subdirectory(src)
 add_subdirectory(doc)
+if(${CMAKE_SYSTEM_NAME} MATCHES Darwin*)
+else()
 add_subdirectory(test)
+endif()

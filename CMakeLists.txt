@@ -43,12 +43,9 @@ add_custom_target(uninstall
 
 add_subdirectory(src)
 add_subdirectory(doc)
-<<<<<<< HEAD
-add_subdirectory(test)
 
-=======
 if(${CMAKE_SYSTEM_NAME} MATCHES Darwin*)
 else()
 add_subdirectory(test)
 endif()
->>>>>>> 21d8601681d6a5879eb7f145a7166b983132e416
+

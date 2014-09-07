@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.4)
+cmake_minimum_required(VERSION 2.8.11)
 project(RFNL)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -19,7 +19,6 @@ elseif(${CMAKE_SYSTEM_PROCESSOR} MATCHES i686*
     OR ${CMAKE_SYSTEM_PROCESSOR} MATCHES x86*)
     add_definitions(-march=i686 -mtune=generic -mtune=core2 -mtune=core-avx-i)
 endif()
-
 message("-- Detected Supported Platform: " ${CMAKE_SYSTEM_PROCESSOR})
 
 # Because of inline functions, we cannot use -O0 for debug.
@@ -44,5 +43,12 @@ add_custom_target(uninstall
 
 add_subdirectory(src)
 add_subdirectory(doc)
+<<<<<<< HEAD
 add_subdirectory(test)
 
+=======
+if(${CMAKE_SYSTEM_NAME} MATCHES Darwin*)
+else()
+add_subdirectory(test)
+endif()
+>>>>>>> 21d8601681d6a5879eb7f145a7166b983132e416

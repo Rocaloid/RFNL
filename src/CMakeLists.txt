@@ -10,6 +10,9 @@ set(CMAKE_SHARED_LINKER_FLAGS "-fPIC")
 
 add_library(RFNL SHARED ${SRC_LIST})
 target_include_directories(RFNL PUBLIC "${CMAKE_SOURCE_DIR}/src")
+
+SET_TARGET_PROPERTIES(RFNL PROPERTIES VERSION 1.0 SOVERSION 1)
+
 target_link_libraries(RFNL RUtil2)
 target_link_libraries(RFNL m)
 
